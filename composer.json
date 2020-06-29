@@ -1,0 +1,23 @@
+{
+    "name": "whatsnum/laravel-checkwa",
+    "description": "Laravel package to check valid whatsapp number using checkwa api",
+    "type": "library",
+    "require": {
+        "php": "7.*",
+        "illuminate/support": "7.*"
+    },
+    "authors": [
+        {
+            "name": "myckhel",
+            "email": "myckhel1@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+      "classmap": [
+      ],
+      "psr-4": {
+          "Whatsnum\\Checkwha\\": "src/"
+      }
+  },
+}
