@@ -17,7 +17,16 @@
       "classmap": [
       ],
       "psr-4": {
-          "Whatsnum\\Checkwha\\": "src/"
+          "Whatsnum\\Checkwa\\": "src/"
       }
   },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "Whatsnum\\Checkwa\\CheckwaProvider"
+        ],
+        "aliases": {
+        }
+    }
+  }
 }
