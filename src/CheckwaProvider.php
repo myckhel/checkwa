@@ -1,6 +1,6 @@
 <?php
 
-namespace Checkwa;
+namespace Whatsnum\Checkwa;
 
 use Illuminate\Support\ServiceProvider;
 
