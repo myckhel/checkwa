@@ -1,12 +1,12 @@
 <?php
-namespace Whatsnum\Checkwa;
+namespace Myckhel\Checkwa;
 
 use Illuminate\Support\Facades\Http;
 
 /**
  *
  */
-class Check
+class Checkwa
 {
   public $private_url = "https://w2.checkwa.com/check/";
   public $public_url  = "https://webservice.checkwa.com/";
@@ -43,5 +43,3 @@ class Check
     return $response->json();
   }
 }
-
-?>

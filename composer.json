@@ -1,32 +1,46 @@
 {
-    "name": "whatsnum/laravel-checkwa",
+    "name": "myckhel/checkwa",
     "description": "Laravel package to check valid whatsapp number using checkwa api",
-    "type": "library",
-    "require": {
-        "php": "7.*",
-        "illuminate/support": "7.*"
-    },
+    "type": "package",
+    "license": "MIT",
+    "homepage": "https://github.com/myckhel/checkwa",
+    "keywords": [
+        "laravel", "checkwa"
+    ],
     "authors": [
         {
-            "name": "myckhel",
+            "name": "Myckhel",
             "email": "myckhel1@hotmail.com"
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+      "illuminate/support": "~5|~6|~7"
+    },
     "autoload": {
-      "classmap": [
-      ],
-      "psr-4": {
-          "Whatsnum\\Checkwa\\": "src"
-      }
-  },
-  "extra": {
-    "laravel": {
-        "providers": [
-            "Whatsnum\\Checkwa\\CheckwaProvider"
-        ],
-        "aliases": {
+        "psr-4": {
+            "Myckhel\\Checkwa\\": "./src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Myckhel\\Checkwa\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Myckhel\\Checkwa\\CheckwaServiceProvider"
+            ],
+            "aliases": {
+                "Checkwa": "Myckhel\\Checkwa\\Facades\\Checkwa"
+            }
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0"
     }
-  }
 }
