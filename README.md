@@ -20,7 +20,7 @@ composer require myckhel/checkwa
 
 Publish the config file
 ```
-php artisan vendor:publish --provider="myckhel\Checkwa\CheckwaServiceProvider" --tag="config"
+php artisan vendor:publish --provider="myckhel\Checkwa\CheckwaServiceProvider"
 ```
 checkwa.php should be copied to the config directory containing
 ```
