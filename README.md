@@ -1,7 +1,7 @@
 # Checkwa
-[![Latest Version](https://img.shields.io/github/release/whatsnum/checkwa.svg?style=flat-square)](https://github.com/whatsnum/checkwa/releases)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/whatsnum/checkwa/run-tests?label=tests)
-[![Total Downloads](https://img.shields.io/packagist/dt/whatsnum/checkwa.svg?style=flat-square)](https://packagist.org/packages/whatsnum/checkwa)
+[![Latest Version](https://img.shields.io/github/release/myckhel/checkwa.svg?style=flat-square)](https://github.com/myckhel/checkwa/releases)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/myckhel/checkwa/run-tests?label=tests)
+[![Total Downloads](https://img.shields.io/packagist/dt/myckhel/checkwa.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkwa)
 
 Laravel package to check valid whatsapp number using checkwa api
 
@@ -10,29 +10,17 @@ PHP ^7
 
 ## Installation
 
-Checkwa can be installed by updating composer.json with
-```
-"require": {
-  "whatsnum/laravel-checkwa": "dev-master"
-},
-"repositories": [
-      {
-        "type": "vcs",
-        "url": "https://github.com/whatsnum/checkwa.git"
-      }
-    ]
-```
-Then run
+Checkwa can be installed using composer
 
 ```
-composer update
+composer require myckhel/checkwa
 ```
 
 ## Setup
 
 Publish the config file
 ```
-php artisan vendor:publish --provider="Whatsnum\Checkwa\CheckwaProvider" --tag="config"
+php artisan vendor:publish --provider="myckhel\Checkwa\CheckwaServiceProvider"
 ```
 checkwa.php should be copied to the config directory containing
 ```
@@ -41,11 +29,9 @@ return [
   "apikey"          => env("CHECKWA_API_KEY"),
   "user"            => env("CHECKWA_USER"),
   "server"          => env("CHECKWA_SERVER", 462),
+  "server_type"     => env("CHECKWA_SERVER_TYPE", "public"),
   "callback"        => env("CHECKWA_CALLBACK"),
-  "private_apikey"  => env("CHECKWA_PRIVATE_API_KEY"),
-  "private_user"    => env("CHECKWA_PRIVATE_USER"),
 ];
-?>
 ```
 Create environment variables in your app's .env file
 
@@ -54,23 +40,19 @@ CHECKWA_API_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX
 CHECKWA_USER=user
 CHECKWA_SERVER=40
 CHECKWA_CALLBACK=https://api.callback.url/checkwa/callback
-CHECKWA_PRIVATE_API_KEY=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX
-CHECKWA_PRIVATE_USER=user
 ```
 
 ## Usage
 
 ### Check Valid Whatsapp Number Using Public Server
 ```
-use Whatsnum\Checkwa\Check;
+use Checkwa;
 use Illuminate\Support\Str;
 ```
 ```
 public function checkWa(Request $request){
 
-  $checkwa = new Check();
-
-  return $checkwa->check($request->phone, $request->phone_code, ['token' => Str::random(), 'hide_image' => '1']);
+  return Checkwa::check($request->phone, $request->phone_code, ['token' => Str::random(), 'hide_image' => '1']);
 }
 ```
 #### Example Valid Response
@@ -90,15 +72,13 @@ public function checkWa(Request $request){
 
 ### Check Valid Whatsapp Number Using Private Server
 ```
-use Whatsnum\Checkwa\Check;
+use Checkwa;
 use Illuminate\Support\Str;
 ```
 ```
 public function checkWa(Request $request){
 
-  $checkwa = new Check('private');
-
-  return $checkwa->check($request->phone, $request->phone_code, ['token' => Str::random(), 'hide_image' => '1']);
+  return Check::check($request->phone, $request->phone_code, ['token' => Str::random(), 'hide_image' => '1']);
 }
 ```
 #### Example Valid Response Using Private Server
