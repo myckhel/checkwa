@@ -77,7 +77,7 @@ use Illuminate\Support\Str;
 ```php
 public function checkWa(Request $request){
 
-  return Check::check($request->phone, $request->phone_code, ['token' => Str::random(), 'hide_image' => '1']);
+  return Checkwa::check($request->phone, $request->phone_code, ['token' => Str::random(), 'hide_image' => '1']);
 }
 ```
 #### Example Valid Response Using Private Server
